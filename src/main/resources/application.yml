@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+person:
+  name: MysteryGuest
+  age: 21
+  birth: 1999/01/09
+  map: {k1: v1, k2: v2}
+  list:
+    - China
+    - Hubei
+  pet:
+    name: niuniu
+    age: 5
