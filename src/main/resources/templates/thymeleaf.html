@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf模板引擎</title>
+</head>
+<body>
+    <h1>Thymeleaf模板语法</h1>
+    <!-- 设置div标签的文本值 -->
+    <div th:text="${text}">这里是div信息</div>
+
+    <div th:text="${utext}"></div>
+    <div th:utext="${utext}"></div>
+    <!-- th:each每次遍历都会生成当前这个标签：多个h4 -->
+    <h4 th:text="${user}" th:each="user: ${users}"></h4>
+    <hr/>
+    <h4>
+        <span th:each="user: ${users}">[[${user}]]</span>
+    </h4>
+</body>
+</html>
