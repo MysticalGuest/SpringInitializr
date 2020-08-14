@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//@Controller
+import java.util.Arrays;
+import java.util.Map;
+
+@Controller
 //@ResponseBody
-@RestController // 这个类的所有方法返回的数据直接写给浏览器，（如果是对象转换为JSON数据）
+//@RestController // 这个类的所有方法返回的数据直接写给浏览器，（如果是对象转换为JSON数据）
 public class HelloController {
 
     private static final Logger LOG = LoggerFactory.getLogger(HelloController.class);
@@ -22,7 +25,15 @@ public class HelloController {
     @Value("${person.name}")
     private String name;
 
-    @RequestMapping("")
+    // 当静态文件夹下有多个index页面，但我想用模板引擎下的
+    // 比如项目public文件夹下有index.html, templates文件夹在也有
+//    @RequestMapping({"/", "index.html"})
+//    public String index(){
+//        return "index";
+//    }
+    // 注释掉，也可以通过配置类实现
+
+    @RequestMapping("hello")
 //    @ResponseBody
     public String Hello(){
         return "Hello World!" + name;
@@ -32,6 +43,16 @@ public class HelloController {
     @ResponseBody
     public String getMapping(){
         return "GetMapping Annotation";
+    }
+
+    @RequestMapping("thymeleaf")
+    public String thymeleaf(Map<String, Object> map){
+        LOG.info("thymeleaf...");
+        map.put("text", "设置div文本值");
+        map.put("utext", "<h2>转义测试</h2>");
+        map.put("users", Arrays.asList("user1", "user2", "user3"));
+//        classpath:/templates/thymeleaf.html
+        return "thymeleaf";
     }
 
     // RESTAPI的方式
