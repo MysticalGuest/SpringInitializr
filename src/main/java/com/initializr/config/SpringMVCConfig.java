@@ -2,6 +2,8 @@ package com.initializr.config;
 
 import com.initializr.component.LoginHandlerInterceptor;
 import com.initializr.component.MyLocaleResolver;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -41,8 +43,8 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
                 // "/**"表示任意多层路径下的任意请求
                 // 静态资源；  *.css , *.js
                 // SpringBoot已经做好了静态资源映射
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html", "/", "/login");
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                        .excludePathPatterns("/index.html", "/", "/login");
             }
         };
         return adapter;
@@ -53,4 +55,5 @@ public class SpringMVCConfig extends WebMvcConfigurerAdapter {
     public LocaleResolver localeResolver(){
         return new MyLocaleResolver();
     }
+
 }
