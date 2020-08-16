@@ -2,12 +2,10 @@ package com.initializr.controller;
 
 
 import com.initializr.bean.Person;
+import com.initializr.exception.UserNotExistException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +32,7 @@ public class HelloController {
     // 注释掉，也可以通过配置类实现
 
     @RequestMapping("hello")
-//    @ResponseBody
+    @ResponseBody
     public String Hello(){
         return "Hello World!" + name;
     }
@@ -53,6 +51,16 @@ public class HelloController {
         map.put("users", Arrays.asList("user1", "user2", "user3"));
 //        classpath:/templates/thymeleaf.html
         return "thymeleaf";
+    }
+
+    @RequestMapping("testMyException")
+    @ResponseBody
+    public String testMyException(@RequestParam("user") String user){
+        // http://localhost:8088/testMyException?user=Tom
+        if(user.equals("Tom")){
+            throw new UserNotExistException();
+        }
+        return "testMyException";
     }
 
     // RESTAPI的方式
