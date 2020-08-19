@@ -3,7 +3,9 @@ package com.initializr.controller;
 
 import com.initializr.bean.Person;
 import com.initializr.exception.UserNotExistException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,6 +25,9 @@ public class HelloController {
 
     @Value("${person.name}")
     private String name;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     // 当静态文件夹下有多个index页面，但我想用模板引擎下的
     // 比如项目public文件夹下有index.html, templates文件夹在也有
@@ -61,6 +67,14 @@ public class HelloController {
             throw new UserNotExistException();
         }
         return "testMyException";
+    }
+
+    // 原生的JDBC操作数据库
+    @GetMapping("jdbc")
+    @ResponseBody
+    public Map<String, Object> jdbc(){
+        List<Map<String, Object>> lists = jdbcTemplate.queryForList("select * from department;");
+        return lists.get(0);
     }
 
     // RESTAPI的方式
