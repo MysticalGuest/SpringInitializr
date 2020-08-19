@@ -1,5 +1,13 @@
 server:
   port: 8081
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.8.156:3306/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
+    schema:
+      - classpath:department.sql
 #person:
 #  name: MysteryGuest
 #  age: 21
