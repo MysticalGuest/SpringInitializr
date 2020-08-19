@@ -40,15 +40,15 @@ public class ServletConfig {
     }
 
     // 配置嵌入式的servlet容器
-    @Bean  //一定要将这个定制器加入到容器中
-    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
-        return new EmbeddedServletContainerCustomizer() {
-
-            //定制嵌入式的Servlet容器相关的规则
-            @Override
-            public void customize(ConfigurableEmbeddedServletContainer container) {
-                container.setPort(8089);
-            }
-        };
-    }
+//    @Bean  //一定要将这个定制器加入到容器中
+//    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+//        return new EmbeddedServletContainerCustomizer() {
+//
+//            //定制嵌入式的Servlet容器相关的规则
+//            @Override
+//            public void customize(ConfigurableEmbeddedServletContainer container) {
+//                container.setPort(8089);
+//            }
+//        };
+//    }
 }
