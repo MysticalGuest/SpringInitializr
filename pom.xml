@@ -29,7 +29,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+<!--            切换servlet时-->
 <!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                </exclusion>-->
+<!--            切换日志实现时-->
+<!--            </exclusions>-->
+            <!--            <exclusions>-->
 <!--                <exclusion>-->
 <!--                    <artifactId>spring-boot-starter-logging</artifactId>-->
 <!--                    <groupId>org.springframework.boot</groupId>-->
@@ -46,6 +54,18 @@
 <!--                </exclusion>-->
 <!--            </exclusions>-->
         </dependency>
+
+        <!-- 引入除Tomcat外的其他Servlet: jetty -->
+<!--        <dependency>-->
+<!--            <artifactId>spring-boot-starter-jetty</artifactId>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--        </dependency>-->
+
+        <!-- 引入除Tomcat外的其他Servlet: undertow -->
+<!--        <dependency>-->
+<!--            <artifactId>spring-boot-starter-undertow</artifactId>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--        </dependency>-->
 
 <!--        <dependency>-->
 <!--            <groupId>org.slf4j</groupId>-->
@@ -68,6 +88,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
