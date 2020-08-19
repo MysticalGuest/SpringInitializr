@@ -12,6 +12,10 @@ import org.springframework.boot.ApplicationHome;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 /**
  * SpringBoot单元测试
  *
@@ -27,6 +31,9 @@ public class SpringinitializrApplicationTests {
 
     @Autowired
     ApplicationContext ioc; // 容器
+
+    @Autowired
+    DataSource dataSource;
 
     // LoggerFactory是记录器工厂，记录器
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -61,6 +68,14 @@ public class SpringinitializrApplicationTests {
         logger.warn("这是警告信息...warning...");
         logger.error("这是错误信息日志，异常捕获...error...");
         // 也可以通过配置文件修改级别
+    }
+
+    @Test
+    public void testJDBC() throws SQLException {
+        System.out.println(dataSource.getClass());
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection);
+        connection.close();
     }
 
 }
