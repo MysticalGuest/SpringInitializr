@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和接口绑定 -->
+<mapper namespace="com.initializr.mapper.EmployeeMapper">
+   <!--
+   public Employee getEmpById(Integer id);
+   public void insertEmp(Employee employee);
+   -->
+    <select id="getEmployeeById" resultType="com.initializr.bean.Employee">
+        SELECT * FROM employee WHERE id=#{id}
+    </select>
+
+    <!--
+    如果没有在mybatis-config.xml文件中配置命名规则, 前端将得到
+    {"id":1,"lastName":"admin","gender":1,"email":"vip@admin.com","did":null}
+    did值为null
+    -->
+    <insert id="insertEmp">
+        INSERT INTO employee(lastName,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
+    </insert>
+</mapper>
