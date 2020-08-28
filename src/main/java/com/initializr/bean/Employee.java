@@ -6,7 +6,21 @@ public class Employee {
     private String lastName;
     private Integer gender;
     private String email;
-    private Integer did;
+    private Integer dId;
+
+    public Employee() {
+        super();
+    }
+
+
+    public Employee(Integer id, String lastName, String email, Integer gender, Integer dId) {
+        super();
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.dId = dId;
+    }
 
     public Integer getId() {
         return id;
@@ -41,10 +55,10 @@ public class Employee {
     }
 
     public Integer getDid() {
-        return did;
+        return dId;
     }
 
-    public void setDid(Integer did) {
-        this.did = did;
+    public void setDid(Integer dId) {
+        this.dId = dId;
     }
 }
