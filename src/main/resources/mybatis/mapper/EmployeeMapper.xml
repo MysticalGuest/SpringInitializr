@@ -17,7 +17,7 @@
     {"id":1,"lastName":"admin","gender":1,"email":"vip@admin.com","did":null}
     did值为null
     -->
-    <insert id="insertEmp">
+    <insert id="insertEmployee">
         INSERT INTO employee(lastName,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
     </insert>
 </mapper>
