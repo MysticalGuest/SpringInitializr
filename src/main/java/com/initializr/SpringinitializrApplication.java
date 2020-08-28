@@ -3,6 +3,7 @@ package com.initializr;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.View;
@@ -13,6 +14,7 @@ import java.util.Locale;
 //@ImportResource(locations = {"classpath:beans.xml"})
 @MapperScan("com.initializr.mapper")
 @SpringBootApplication
+@EnableCaching
 public class SpringinitializrApplication {
 
     public static void main(String[] args) {
