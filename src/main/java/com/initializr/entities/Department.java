@@ -7,7 +7,7 @@ public class Department {
 
 	public Department() {
 	}
-	
+
 	public Department(int i, String string) {
 		this.id = i;
 		this.departmentName = string;
